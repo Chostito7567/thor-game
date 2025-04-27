@@ -14,6 +14,8 @@ public class shooting : MonoBehaviour
     public float shootCooldown = 0.2f; // Cooldown time between shots
     private float cooldownTimer = 0.2f;  // Timer to track shooting cooldown
 
+    public Vector3 thunderScale = new Vector3(2f, 2f, 1f); // Scale factor to make thunder twice as big
+
     void Start()
     {
         // Set the firePoint position to a static value
@@ -52,10 +54,17 @@ public class shooting : MonoBehaviour
     void Shoot()
     {
         GameObject thunder = Instantiate(thunderPrefab, firePoint.position, Quaternion.identity);
+
+        // Scale the thunder (make it twice as big)
+        thunder.transform.localScale = thunderScale;
+
+        // Adjust the position of the thunder (move it slightly more to the right)
+        thunder.transform.position = new Vector3(firePoint.position.x + 0.75f, firePoint.position.y, firePoint.position.z);
+
         Rigidbody2D rb = thunder.GetComponent<Rigidbody2D>();
         if (rb != null)
         {
-            rb.velocity = Vector2.down * bulletSpeed;
+            rb.velocity = Vector2.down * bulletSpeed;  // Make the thunder move downward
         }
     }
 }

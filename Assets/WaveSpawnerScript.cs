@@ -32,6 +32,9 @@ public class RandomEnemySpawner : MonoBehaviour
         Vector3 spawnPosition = new Vector3(randomX, spawnY, 0f);
         GameObject enemy = Instantiate(enemyPrefab, spawnPosition, Quaternion.identity);
 
+        // Scale the spawned enemy to 0.5 on all axes
+        enemy.transform.localScale = new Vector3(0.3f, 0.3f, 0.3f);
+
         ZombieFollowAndDisappear zfd = enemy.GetComponent<ZombieFollowAndDisappear>();
         if (zfd != null)
         {
