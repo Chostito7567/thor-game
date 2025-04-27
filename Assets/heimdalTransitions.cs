@@ -3,7 +3,7 @@ using UnityEngine.SceneManagement; // IMPORTANT: Add this so we can change scene
 
 public class tempTransitions : MonoBehaviour
 {
-    public float delay = 10f; // 10-second delay timer
+    public float delay = 30f; // 10-second delay timer
 
     private float timer = 0f;
     private bool timerStarted = false;

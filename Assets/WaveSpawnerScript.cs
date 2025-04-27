@@ -1,18 +1,23 @@
+//using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement; // IMPORTANT: Add this so we can change scenes
 
 public class RandomEnemySpawner : MonoBehaviour
 {
     public GameObject enemyPrefab;       // Assign your enemy prefab
-    public int defeatGoal = 15;          // How many to kill before stopping
+    public int defeatGoal = 10;          // How many to kill before stopping
     public float minX = -8f;             // Left boundary of your game
     public float maxX = 8f;              // Right boundary of your game
-    public float spawnY = -4.5f;         // Bottom of the game where enemies spawn
-    public float spawnDelay = 1f;        // Delay between waves
+    public float spawnY = -5.8f;         // Bottom of the game where enemies spawn
+    public float spawnDelay = 3f;        // Delay between waves
 
     private int enemiesDefeated = 0;
     private List<GameObject> activeEnemies = new List<GameObject>();
+
+    //For now back to the Title-Scene, will go to mini-boss next
+    public string nextSceneName = "Title-Scene"; // ← Set this in Inspector OR hardcode your next scene name
 
     void Start()
     {
@@ -24,12 +29,14 @@ public class RandomEnemySpawner : MonoBehaviour
         while (enemiesDefeated < defeatGoal)
         {
             SpawnThreeEnemies();
-            yield return new WaitUntil(() => activeEnemies.Count == 0); // Wait until all enemies are defeated
+            Debug.Log(enemiesDefeated);
+            // NO more wait yield return new WaitUntil(() => activeEnemies.Count == 0); // Wait until all enemies are defeated
             yield return new WaitForSeconds(spawnDelay); // Delay before next wave
         }
 
         ClearAllEnemies();
         Debug.Log("Defeat goal reached! All enemies cleared.");
+        LoadNextScene();
     }
 
     void SpawnThreeEnemies()
@@ -48,6 +55,7 @@ public class RandomEnemySpawner : MonoBehaviour
     // You call this when any enemy dies!
     public void EnemyDefeated(GameObject enemy)
     {
+        Debug.Log("hit");
         enemiesDefeated++;
         activeEnemies.Remove(enemy);
     }
@@ -62,5 +70,10 @@ public class RandomEnemySpawner : MonoBehaviour
             }
         }
         activeEnemies.Clear();
+    }
+
+    void LoadNextScene()
+    {
+        SceneManager.LoadScene(nextSceneName);
     }
 }

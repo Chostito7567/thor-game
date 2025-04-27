@@ -253,8 +253,9 @@ MonoBehaviour:
   defeatGoal: 15
   minX: -8
   maxX: 8
-  spawnY: -4.5
+  spawnY: -5.8
   spawnDelay: 1
+  nextSceneName: Title-Scene
 --- !u!4 &782742144
 Transform:
   m_ObjectHideFlags: 0
@@ -739,7 +740,7 @@ Transform:
   m_GameObject: {fileID: 1116225223}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0.36852214}
+  m_LocalPosition: {x: 1.77, y: 1.34, z: 0.36852214}
   m_LocalScale: {x: 32, y: 18, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -773,7 +774,7 @@ Transform:
   m_GameObject: {fileID: 1174836547}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.34, y: -7.88, z: 0.1420192}
+  m_LocalPosition: {x: -1.3, y: -5.84, z: 0.1420192}
   m_LocalScale: {x: 5.109, y: 4.7478, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -876,7 +877,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -1036,6 +1037,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1e7ebb1548104285bb6bc69d912a90e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  delay: 10
   nextSceneName: Trophy-Thing
 --- !u!4 &2000246703
 Transform:
