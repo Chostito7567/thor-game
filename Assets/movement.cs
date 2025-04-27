@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class movement : MonoBehaviour
 {
-    public float speed = 5f; // You can adjust this in the Inspector
+    public float speed = 10f; // You can adjust this in the Inspector
 
     // Update is called once per frame
     void Update()

@@ -11,8 +11,8 @@ public class shooting : MonoBehaviour
     public float inputDelay = 2f;    // Delay time before input is accepted at start
     private float delayTimer;        // Timer to track delay
 
-    public float shootCooldown = 0.05f; // Cooldown time between shots
-    private float cooldownTimer = 0f;  // Timer to track shooting cooldown
+    public float shootCooldown = 0.2f; // Cooldown time between shots
+    private float cooldownTimer = 0.2f;  // Timer to track shooting cooldown
 
     void Start()
     {

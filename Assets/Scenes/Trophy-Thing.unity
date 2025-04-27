@@ -521,6 +521,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   nextSceneName: Heimdal-1
+  delay: 5
+  trophy: {fileID: 130598744}
 --- !u!4 &1530850315
 Transform:
   m_ObjectHideFlags: 0
