@@ -1,9 +1,11 @@
 using System.Collections;
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement; // IMPORTANT: Add this so we can change scenes
 
 public class Dialogue : MonoBehaviour
 {
+    public string nextSceneName = "Heimdal-1"; // ← Set this in Inspector OR hardcode your next scene name
     [System.Serializable]
     public class DialogueLine
     {
@@ -101,6 +103,7 @@ public class Dialogue : MonoBehaviour
             }
 
             StartCoroutine(Jump(thorSprite.transform));
+            SceneManager.LoadScene(nextSceneName);
         }
     }
 
