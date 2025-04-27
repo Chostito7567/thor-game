@@ -1,116 +1,66 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
- 
-public class WaveSpawner : MonoBehaviour
+
+public class RandomEnemySpawner : MonoBehaviour
 {
-   
-    public List<Enemy> enemies = new List<Enemy>();
-    public int currWave;
-    private int waveValue;
-    public List<GameObject> enemiesToSpawn = new List<GameObject>();
- 
-    public Transform[] spawnLocation;
-    public int spawnIndex;
- 
-    public int waveDuration;
-    private float waveTimer;
-    private float spawnInterval;
-    private float spawnTimer;
- 
-    public List<GameObject> spawnedEnemies = new List<GameObject>();
-    // Start is called before the first frame update
+    public GameObject enemyPrefab;       // Assign your enemy prefab
+    public int defeatGoal = 15;          // How many to kill before stopping
+    public float minX = -8f;             // Left boundary of your game
+    public float maxX = 8f;              // Right boundary of your game
+    public float spawnY = -4.5f;         // Bottom of the game where enemies spawn
+    public float spawnDelay = 1f;        // Delay between waves
+
+    private int enemiesDefeated = 0;
+    private List<GameObject> activeEnemies = new List<GameObject>();
+
     void Start()
     {
-        GenerateWave();
+        StartCoroutine(SpawnWaves());
     }
- 
-    // Update is called once per frame
-    void FixedUpdate()
+
+    IEnumerator SpawnWaves()
     {
-        if(spawnTimer <=0)
+        while (enemiesDefeated < defeatGoal)
         {
-            //spawn an enemy
-            if(enemiesToSpawn.Count >0)
-            {
-                GameObject enemy = (GameObject)Instantiate(enemiesToSpawn[0], spawnLocation[spawnIndex].position,Quaternion.identity); // spawn first enemy in our list
-                enemiesToSpawn.RemoveAt(0); // and remove it
-                spawnedEnemies.Add(enemy);
-                spawnTimer = spawnInterval;
- 
-                if(spawnIndex + 1 <= spawnLocation.Length-1)
-                {
-                    spawnIndex++;
-                }
-                else
-                {
-                    spawnIndex = 0;
-                }
-            }
-            else
-            {
-                waveTimer = 0; // if no enemies remain, end wave
-            }
+            SpawnThreeEnemies();
+            yield return new WaitUntil(() => activeEnemies.Count == 0); // Wait until all enemies are defeated
+            yield return new WaitForSeconds(spawnDelay); // Delay before next wave
         }
-        else
-        {
-            spawnTimer -= Time.fixedDeltaTime;
-            waveTimer -= Time.fixedDeltaTime;
-        }
- 
-        if(waveTimer<=0 && spawnedEnemies.Count <=0)
-        {
-            currWave++;
-            GenerateWave();
-        }
+
+        ClearAllEnemies();
+        Debug.Log("Defeat goal reached! All enemies cleared.");
     }
- 
-    public void GenerateWave()
+
+    void SpawnThreeEnemies()
     {
-        waveValue = currWave * 10;
-        GenerateEnemies();
- 
-        spawnInterval = waveDuration / enemiesToSpawn.Count; // gives a fixed time between each enemies
-        waveTimer = waveDuration; // wave duration is read only
-    }
- 
-    public void GenerateEnemies()
-    {
-        // Create a temporary list of enemies to generate
-        // 
-        // in a loop grab a random enemy 
-        // see if we can afford it
-        // if we can, add it to our list, and deduct the cost.
- 
-        // repeat... 
- 
-        //  -> if we have no points left, leave the loop
- 
-        List<GameObject> generatedEnemies = new List<GameObject>();
-        while(waveValue>0 || generatedEnemies.Count <50)
+        activeEnemies.Clear();
+
+        for (int i = 0; i < 3; i++)
         {
-            int randEnemyId = Random.Range(0, enemies.Count);
-            int randEnemyCost = enemies[randEnemyId].cost;
- 
-            if(waveValue-randEnemyCost>=0)
+            float randomX = Random.Range(minX, maxX);
+            Vector3 spawnPos = new Vector3(randomX, spawnY, 0f);
+            GameObject enemy = Instantiate(enemyPrefab, spawnPos, Quaternion.identity);
+            activeEnemies.Add(enemy);
+        }
+    }
+
+    // You call this when any enemy dies!
+    public void EnemyDefeated(GameObject enemy)
+    {
+        enemiesDefeated++;
+        activeEnemies.Remove(enemy);
+    }
+
+    void ClearAllEnemies()
+    {
+        foreach (GameObject enemy in activeEnemies)
+        {
+            if (enemy != null)
             {
-                generatedEnemies.Add(enemies[randEnemyId].enemyPrefab);
-                waveValue -= randEnemyCost;
-            }
-            else if(waveValue<=0)
-            {
-                break;
+                Destroy(enemy);
             }
         }
-        enemiesToSpawn.Clear();
-        enemiesToSpawn = generatedEnemies;
+        activeEnemies.Clear();
     }
-  
-}
- 
-[System.Serializable]
-public class Enemy
-{
-    public GameObject enemyPrefab;
-    public int cost;
 }

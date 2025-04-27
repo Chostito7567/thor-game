@@ -249,16 +249,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3268eb0a09ea0ca42a6093a3eaf71fdb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemies:
-  - enemyPrefab: {fileID: 1076767297}
-    cost: 1
-  currWave: 0
-  enemiesToSpawn: []
-  spawnLocation:
-  - {fileID: 926911214}
-  spawnIndex: 0
-  waveDuration: 10
-  spawnedEnemies: []
+  enemyPrefab: {fileID: 1076767297}
+  defeatGoal: 15
+  minX: -8
+  maxX: 8
+  spawnY: -4.5
+  spawnDelay: 1
 --- !u!4 &782742144
 Transform:
   m_ObjectHideFlags: 0
@@ -496,6 +492,8 @@ MonoBehaviour:
   thunderPrefab: {fileID: 677355826}
   bulletSpeed: 10
   firePoint: {fileID: 455576201}
+  inputDelay: 2
+  shootCooldown: 0.5
 --- !u!114 &1110928644
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -775,7 +773,7 @@ Transform:
   m_GameObject: {fileID: 1174836547}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.53, y: -4.05, z: 0.1420192}
+  m_LocalPosition: {x: -1.34, y: -7.88, z: 0.1420192}
   m_LocalScale: {x: 5.109, y: 4.7478, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -794,7 +792,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 1110928646}
-  speed: 1
+  speed: 2.5
   stoppingDistance: 0.5
   hitCounter: 3
 --- !u!212 &1174836550
