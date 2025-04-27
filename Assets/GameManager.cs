@@ -55,10 +55,7 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene(nextSceneName);
     }
     
-    public void LoadDeathScene()
-    {
-        SceneManager.LoadScene(deathScene);
-    }
+
 
 
 }
