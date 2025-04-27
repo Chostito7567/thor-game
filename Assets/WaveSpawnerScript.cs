@@ -19,7 +19,7 @@ public class RandomEnemySpawner : MonoBehaviour
     private RandomEnemySpawner spawner;
 
     //For now back to the Title-Scene, will go to mini-boss next
-    public string nextSceneName = "Title_Scene"; // ← Set this in Inspector OR hardcode your next scene name
+    public string nextSceneName = "dialogue_real"; // ← Set this in Inspector OR hardcode your next scene name
 
     void Start()
     {
