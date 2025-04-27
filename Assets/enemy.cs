@@ -4,53 +4,34 @@ using System.Collections;
 
 public class ZombieFollowAndDisappear : MonoBehaviour
 {
-    [Header("References")]
     public Transform player;
-
-    [Header("Movement")]
     public float speed = 2f;
     public float stoppingDistance = 0.5f;
 
-    [Header("Boss Settings")]
-    public int hitCounter = 3;
-    public int bossFlag;          // 1 if boss
-    public string nextSceneName = "Trophy-Thing";  // Set this in Inspector for boss only
-
-    // How far below the camera to spawn
-    public float spawnOffsetY = -10f;
-
-    private bool isSleeping = false;
-    private SpriteRenderer spriteRenderer;
-    private Collider2D col2d;
-
-    void Awake()
-    {
-        spriteRenderer = GetComponent<SpriteRenderer>();
-        col2d = GetComponent<Collider2D>();
-    }
+    private bool isDead = false;
+    private GameManager gm;
 
     void Start()
     {
-        if (bossFlag == 1)
-            StartCoroutine(BossSleepRoutine());
+        gm = FindObjectOfType<GameManager>();
     }
 
     void Update()
     {
-        if (player == null || (bossFlag == 1 && isSleeping))
-            return;
-
-        float distance = Vector3.Distance(transform.position, player.position);
-        if (distance > stoppingDistance)
+        if (player != null && !isDead)
         {
             Vector3 dir = (player.position - transform.position).normalized;
             transform.position += dir * speed * Time.deltaTime;
 
-            Vector3 scale = transform.localScale;
-            scale.x = player.position.x > transform.position.x
-                      ? Mathf.Abs(scale.x)
-                      : -Mathf.Abs(scale.x);
-            transform.localScale = scale;
+            if (distance > stoppingDistance)
+            {
+                Vector3 direction = (player.position - transform.position).normalized;
+                transform.position += direction * speed * Time.deltaTime;
+
+                Vector3 scale = transform.localScale;
+                scale.x = player.position.x > transform.position.x ? Mathf.Abs(scale.x) : -Mathf.Abs(scale.x);
+                transform.localScale = scale;
+            }
         }
     }
 
@@ -80,21 +61,33 @@ public class ZombieFollowAndDisappear : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        hitCounter--;
-        Destroy(other.gameObject);
+        if (isDead) return;
 
-        if (hitCounter <= 0)
+        if (other.CompareTag("Bullet"))
         {
-            if (bossFlag == 1)
-            {
-                // Boss died → load next scene
-                SceneManager.LoadScene(nextSceneName);
-            }
-            else
-            {
-                // Regular NPC or no scene specified → just destroy
-                Destroy(gameObject);
-            }
+            Die();
+            Destroy(other.gameObject); // destroy the bullet too
         }
+        else if (other.CompareTag("Player"))
+        {
+            PlayerController player = other.GetComponent<PlayerController>();
+            if (player != null)
+            {
+                player.TakeDamage();
+            }
+            Die();
+        }
+    }
+
+    void Die()
+    {
+        isDead = true;
+
+        if (gm != null)
+        {
+            gm.AddKill(); // +1 kill
+        }
+
+        Destroy(gameObject);
     }
 }

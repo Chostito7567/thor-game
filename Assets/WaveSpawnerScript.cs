@@ -1,66 +1,41 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using System.Collections;
 
 public class RandomEnemySpawner : MonoBehaviour
 {
-    public GameObject enemyPrefab;       // Assign your enemy prefab
-    public int defeatGoal = 15;          // How many to kill before stopping
-    public float minX = -8f;             // Left boundary of your game
-    public float maxX = 8f;              // Right boundary of your game
-    public float spawnY = -4.5f;         // Bottom of the game where enemies spawn
-    public float spawnDelay = 1f;        // Delay between waves
+    public GameObject enemyPrefab;
+    public float minX = -8f;
+    public float maxX = 8f;
+    public float spawnY = -5.8f;
+    public float spawnDelay = 2f;
 
-    private int enemiesDefeated = 0;
-    private List<GameObject> activeEnemies = new List<GameObject>();
+    private Transform player; // <<< new!
 
     void Start()
     {
-        StartCoroutine(SpawnWaves());
+        player = GameObject.FindGameObjectWithTag("Player").transform; // find Thor automatically
+        StartCoroutine(SpawnEnemiesForever());
     }
 
-    IEnumerator SpawnWaves()
+    IEnumerator SpawnEnemiesForever()
     {
-        while (enemiesDefeated < defeatGoal)
+        while (true)
         {
-            SpawnThreeEnemies();
-            yield return new WaitUntil(() => activeEnemies.Count == 0); // Wait until all enemies are defeated
-            yield return new WaitForSeconds(spawnDelay); // Delay before next wave
-        }
-
-        ClearAllEnemies();
-        Debug.Log("Defeat goal reached! All enemies cleared.");
-    }
-
-    void SpawnThreeEnemies()
-    {
-        activeEnemies.Clear();
-
-        for (int i = 0; i < 3; i++)
-        {
-            float randomX = Random.Range(minX, maxX);
-            Vector3 spawnPos = new Vector3(randomX, spawnY, 0f);
-            GameObject enemy = Instantiate(enemyPrefab, spawnPos, Quaternion.identity);
-            activeEnemies.Add(enemy);
+            SpawnEnemy();
+            yield return new WaitForSeconds(spawnDelay);
         }
     }
 
-    // You call this when any enemy dies!
-    public void EnemyDefeated(GameObject enemy)
+    void SpawnEnemy()
     {
-        enemiesDefeated++;
-        activeEnemies.Remove(enemy);
-    }
+        float randomX = Random.Range(minX, maxX);
+        Vector3 spawnPosition = new Vector3(randomX, spawnY, 0f);
+        GameObject enemy = Instantiate(enemyPrefab, spawnPosition, Quaternion.identity);
 
-    void ClearAllEnemies()
-    {
-        foreach (GameObject enemy in activeEnemies)
+        ZombieFollowAndDisappear zfd = enemy.GetComponent<ZombieFollowAndDisappear>();
+        if (zfd != null)
         {
-            if (enemy != null)
-            {
-                Destroy(enemy);
-            }
+            zfd.player = player; // <<< tell the new enemy to follow Thor
         }
-        activeEnemies.Clear();
     }
 }
