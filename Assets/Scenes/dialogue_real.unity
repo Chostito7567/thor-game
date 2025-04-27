@@ -586,11 +586,20 @@ MonoBehaviour:
   thorSprite: {fileID: 759759600}
   lines:
   - speaker: Odin
-    dialogue: Yo on some type shit dont
-  - speaker: Thor
-    dialogue: 'Real shit? '
+    dialogue: Thor....
   - speaker: Odin
-    dialogue: Nah kill yourself
+    dialogue: The prophecy says if you do this, you will die.
+  - speaker: Thor
+    dialogue: To hel with that prophecy!
+  - speaker: Thor
+    dialogue: 'If I dont go millions will die. '
+  - speaker: Odin
+    dialogue: 'AND LET ONE OF MY OWN SONS MARCH TO HIS DEATH!? '
+  - speaker: Thor
+    dialogue: You cant stop me...
+  - speaker: Odin
+    dialogue: "I know... but I can try. Loki! If you want to save J\xF6rmungandr,
+      stop Thor! "
   textSpeed: 0.1
 --- !u!4 &890668730
 Transform:
