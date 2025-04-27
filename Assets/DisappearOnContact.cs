@@ -8,7 +8,7 @@ public class DisappearOnContact : MonoBehaviour
     {
         hitCounter -= 1;
         if(hitCounter == 0){
-            Destroy(gameObject);
+            // Destroy(gameObject); reworked to end scene
         }
         Destroy(other.gameObject);
     }

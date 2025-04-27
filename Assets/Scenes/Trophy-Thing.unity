@@ -692,7 +692,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb0e2c0b8397946839a152cf24ddf8af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
+  speed: 10
 --- !u!114 &1692688877
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -708,6 +708,8 @@ MonoBehaviour:
   thunderPrefab: {fileID: 1863914537}
   bulletSpeed: 10
   firePoint: {fileID: 1379837189}
+  inputDelay: 0.2
+  shootCooldown: 0.2
 --- !u!1 &1863914537 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6494671392712809245, guid: ce48110b56ca447829b48aec2ce39f40, type: 3}
