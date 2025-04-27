@@ -715,7 +715,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   deathScene: Freaky_Loki
   kills: 0
-  killsNeeded: 25
+  killsNeeded: 2
   survivalTime: 0
   timeLimit: 45
   killText: {fileID: 0}
