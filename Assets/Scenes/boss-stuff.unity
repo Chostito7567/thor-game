@@ -302,7 +302,7 @@ MonoBehaviour:
   speed: 2
   stoppingDistance: 2
   hitCounter: 15
-  nextSceneName: Title_Screen
+  nextSceneName: End_Screen
 --- !u!1 &455576200
 GameObject:
   m_ObjectHideFlags: 0
@@ -578,6 +578,7 @@ MonoBehaviour:
   firePoint: {fileID: 455576201}
   inputDelay: 0.2
   shootCooldown: 0.2
+  thunderScale: {x: 2, y: 2, z: 1}
 --- !u!114 &1110928644
 MonoBehaviour:
   m_ObjectHideFlags: 0
