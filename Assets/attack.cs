@@ -8,7 +8,7 @@ public class shooting : MonoBehaviour
     public float bulletSpeed = 10f;   // Speed at which the thunder flies
     public Transform firePoint;      // Where the bullet comes out from
 
-    public float inputDelay = 2f;    // Delay time before input is accepted at start
+    public float inputDelay = 0.2f;    // Delay time before input is accepted at start
     private float delayTimer;        // Timer to track delay
 
     public float shootCooldown = 0.2f; // Cooldown time between shots
