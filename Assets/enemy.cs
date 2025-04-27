@@ -5,19 +5,18 @@ public class ZombieFollowAndDisappear : MonoBehaviour
     public Transform player;
     public float speed = 2f;
     public float stoppingDistance = 0.5f;
-    public int hitCounter = 3;
 
-    private RandomEnemySpawner spawner; // reference to spawner
+    private bool isDead = false;
+    private GameManager gm;
 
     void Start()
     {
-        // Find the spawner in the scene (you can tag it if you want too)
-        spawner = FindObjectOfType<RandomEnemySpawner>();
+        gm = FindObjectOfType<GameManager>();
     }
 
     void Update()
     {
-        if (player != null)
+        if (player != null && !isDead)
         {
             float distance = Vector3.Distance(transform.position, player.position);
 
@@ -35,17 +34,33 @@ public class ZombieFollowAndDisappear : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        hitCounter -= 1;
+        if (isDead) return;
 
-        if (hitCounter <= 0)
+        if (other.CompareTag("Bullet"))
         {
-            if (spawner != null)
+            Die();
+            Destroy(other.gameObject); // destroy the bullet too
+        }
+        else if (other.CompareTag("Player"))
+        {
+            PlayerController player = other.GetComponent<PlayerController>();
+            if (player != null)
             {
-                spawner.EnemyDefeated(gameObject); // tell the spawner this enemy died!
+                player.TakeDamage();
             }
-            Destroy(gameObject);
+            Die();
+        }
+    }
+
+    void Die()
+    {
+        isDead = true;
+
+        if (gm != null)
+        {
+            gm.AddKill(); // +1 kill
         }
 
-        Destroy(other.gameObject);
+        Destroy(gameObject);
     }
 }

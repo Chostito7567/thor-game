@@ -4,14 +4,12 @@ using UnityEngine;
 
 public class ScrollingBackground : MonoBehaviour
 {
-    // Start is called before the first frame update
-    public float speed; [SerializeField] private Renderer bgRenderer;
+    public float speed = 0.1f;
+    [SerializeField] private Renderer bgRenderer;
 
-    // Update is called once per frame
     void Update()
     {
-        //bgRenderer.material.mainTextureOffset+= new Vector2(speed*Time.deltaTime,0);
-        bgRenderer.material.mainTextureOffset -= new Vector2(0, speed * Time.deltaTime);
-
+        // Scroll the background down so characters seem like they're falling
+        bgRenderer.material.mainTextureOffset -= new Vector2(0, speed * Time.deltaTime); // Move downward
     }
 }
