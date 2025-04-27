@@ -273,7 +273,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 5
-  m_Sprite: {fileID: 21300000, guid: 50f1ab42fc32b2a46847d22f76957901, type: 3}
+  m_Sprite: {fileID: 21300000, guid: a861b9e6e49f045b8b23b66d666bbc68, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -293,8 +293,8 @@ Transform:
   m_GameObject: {fileID: 76420965}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: 0.7037164, w: 0.710481}
-  m_LocalPosition: {x: -6.3836, y: 1.0116, z: 0}
-  m_LocalScale: {x: 0.37239188, y: 0.3434254, z: 1}
+  m_LocalPosition: {x: 0.7557, y: -3.9404, z: 0}
+  m_LocalScale: {x: -1.5830045, y: 6.118356, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -544,7 +544,7 @@ Transform:
   m_GameObject: {fileID: 759759600}
   serializedVersion: 2
   m_LocalRotation: {x: -0.055994913, y: -0.043073107, z: 0.69890875, w: 0.71171343}
-  m_LocalPosition: {x: 6.0594, y: -0.4858, z: -0.0446}
+  m_LocalPosition: {x: -0.01, y: 4.07, z: -0.91}
   m_LocalScale: {x: 0.2769733, y: 0.20164259, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -586,13 +586,15 @@ MonoBehaviour:
   thorSprite: {fileID: 759759600}
   lines:
   - speaker: Odin
-    dialogue: Nice, you have some talent.
+    dialogue: '"A deep rumble fills the air..."You cannot escape your fate, Thor.'
   - speaker: Thor
-    dialogue: Yeah, I am ready to take you on
+    dialogue: 'Enough you overgrown worm, Ive come to end you. '
   - speaker: Odin
-    dialogue: bet.
+    dialogue: '*THE GREAT SERPANT RISES* ROOOOOOOAAAAARRR...'
+  - speaker: Odin
+    dialogue: '"SSSSSSSSS... You cannot hide, Thor."'
   - speaker: Thor
-    dialogue: '*internal dialogue* I can power up now'
+    dialogue: I can power up now.
   textSpeed: 0.1
 --- !u!4 &890668730
 Transform:
