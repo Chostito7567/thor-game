@@ -542,7 +542,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -556,7 +556,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 2.88, y: 2.84}
+  m_Size: {x: 20, y: 20}
   m_EdgeRadius: 0
 --- !u!50 &1110928648
 Rigidbody2D:
@@ -712,6 +712,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3492c065a8eba4a77b6e0fbc4bdc90da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  deathScene: Freaky_Loki
   kills: 0
   killsNeeded: 1
   survivalTime: 0
