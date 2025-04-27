@@ -302,7 +302,7 @@ MonoBehaviour:
   speed: 2
   stoppingDistance: 2
   hitCounter: 15
-  nextSceneName: Title_Screen
+  nextSceneName: End_Screen
 --- !u!1 &455576200
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,11 +1,11 @@
 using System.Collections;
 using UnityEngine;
 using TMPro;
-using UnityEngine.SceneManagement; // IMPORTANT: Add this so we can change scenes
+using UnityEngine.SceneManagement;
 
 public class Dialogue : MonoBehaviour
 {
-    public string nextSceneName = "Heimdal-1"; // ← Set this in Inspector OR hardcode your next scene name
+    public string nextSceneName = "Heimdal-1"; // Set this in Inspector OR hardcode your next scene name
     [System.Serializable]
     public class DialogueLine
     {
@@ -17,6 +17,7 @@ public class Dialogue : MonoBehaviour
     public GameObject dialogueUI;
     public GameObject odinSprite;
     public GameObject thorSprite;
+    public GameObject jormungandrSprite; // Add Jörmungandr sprite reference
     public DialogueLine[] lines;
     public float textSpeed = 0.05f;
 
@@ -31,7 +32,6 @@ public class Dialogue : MonoBehaviour
 
     void Update()
     {
-
         if (Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.Space))
         {
             if (!isTyping)
@@ -75,6 +75,10 @@ public class Dialogue : MonoBehaviour
         else if (speaker == "Thor")
         {
             currentShake = StartCoroutine(Shake(thorSprite.transform));
+        }
+        else if (speaker == "Jörmungandr") // Add Jörmungandr as a speaker
+        {
+            currentShake = StartCoroutine(Shake(jormungandrSprite.transform)); // Shake Jörmungandr sprite
         }
 
         foreach (char c in dialogue.ToCharArray())
