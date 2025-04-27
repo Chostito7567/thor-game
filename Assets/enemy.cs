@@ -1,7 +1,10 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class ZombieFollowAndDisappear : MonoBehaviour
 {
+
+    public string deathScene = "Freaky_Loki"; // ← Set this in Inspector OR hardcode your next scene name
     public Transform player;
     public float speed = 2f;
     public float stoppingDistance = 0.5f;
@@ -43,13 +46,21 @@ public class ZombieFollowAndDisappear : MonoBehaviour
         }
         else if (other.CompareTag("Player"))
         {
-            PlayerController player = other.GetComponent<PlayerController>();
-            if (player != null)
-            {
-                player.TakeDamage();
-            }
-            Die();
+            Debug.Log("You died!");
+
+            LoadDeathScene();
+
+            // if (player != null)
+            // {
+            //     player.TakeDamage();
+            // }
+            // Die();
         }
+    }
+
+    public void LoadDeathScene()
+    {
+        SceneManager.LoadScene(deathScene);
     }
 
     void Die()

@@ -5,6 +5,7 @@ using System.Collections;
 
 public class GameManager : MonoBehaviour
 {
+    public string deathScene = "Freaky_Loki"; // ← Set this in Inspector OR hardcode your next scene name
     public int kills = 0;
     public int killsNeeded = 20;
     public float survivalTime = 0f;
@@ -38,6 +39,7 @@ public class GameManager : MonoBehaviour
             gameEnded = true;
             StartCoroutine(TransitionToNextScene());
         }
+
     }
 
 
@@ -52,5 +54,11 @@ public class GameManager : MonoBehaviour
         yield return new WaitForSeconds(1f); // Short delay to feel smoother
         SceneManager.LoadScene(nextSceneName);
     }
+    
+    public void LoadDeathScene()
+    {
+        SceneManager.LoadScene(deathScene);
+    }
+
 
 }

@@ -29,4 +29,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/boss-stuff.unity
     guid: 12159d2804786d24780160c6f7cb5212
+  - enabled: 1
+    path: Assets/Scenes/Freaky_Loki.unity
+    guid: 688a104d4586b42f78f2fbad4d5d8114
   m_configObjects: {}

@@ -3,7 +3,7 @@ using UnityEngine.SceneManagement; // IMPORTANT: Add this so we can change scene
 
 public class LokiTransitions : MonoBehaviour
 {
-    public string nextSceneName = "Title_Screen"; // ← Set this in Inspector OR hardcode your next scene name
+    public string nextSceneName = "Heimdal-1"; // ← Set this in Inspector OR hardcode your next scene name
 
     void Update()
     {
