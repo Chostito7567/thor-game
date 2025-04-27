@@ -584,16 +584,17 @@ MonoBehaviour:
   dialogueUI: {fileID: 2028459627}
   odinSprite: {fileID: 76420965}
   thorSprite: {fileID: 759759600}
+  jormungandrSprite: {fileID: 76420965}
   lines:
-  - speaker: Odin
+  - speaker: "J\xF6rmungandr"
     dialogue: '"A deep rumble fills the air..."You cannot escape your fate, Thor.'
   - speaker: Thor
     dialogue: 'Enough you overgrown worm, Ive come to end you. '
-  - speaker: Odin
+  - speaker: "J\xF6rmungandr"
     dialogue: '*THE GREAT SERPANT RISES* ROOOOOOOAAAAARRR...'
   - speaker: Odin
     dialogue: '"SSSSSSSSS... You cannot hide, Thor."'
-  - speaker: Thor
+  - speaker: "J\xF6rmungandr"
     dialogue: I can power up now.
   textSpeed: 0.1
 --- !u!4 &890668730
@@ -677,8 +678,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4278789941
-  m_fontColor: {r: 0.20754719, g: 0.154368, b: 0.034264863, a: 1}
+    rgba: 4288517780
+  m_fontColor: {r: 0.5803922, g: 0.5882353, b: 0.6156863, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
