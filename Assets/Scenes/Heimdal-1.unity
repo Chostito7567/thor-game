@@ -276,7 +276,7 @@ MonoBehaviour:
   maxX: 8
   spawnY: -5.8
   spawnDelay: 1
-  nextSceneName: Title-Scene
+  nextSceneName: Title_Scene
 --- !u!4 &782742144
 Transform:
   m_ObjectHideFlags: 0
