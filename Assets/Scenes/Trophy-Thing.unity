@@ -280,10 +280,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 130598739}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: be505ec6562fa46f09c19a44c154fba9, type: 3}
+  m_Script: {fileID: 11500000, guid: 8ddabff138a1b0f47a47578cd971c5a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hitCounter: 3
+  player: {fileID: 1692688875}
+  speed: 2
+  stoppingDistance: 0.5
+  hitCounter: 5
+  nextSceneName: boss-stuff
 --- !u!1 &698902489
 GameObject:
   m_ObjectHideFlags: 0
@@ -517,12 +521,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1530850313}
   m_Enabled: 0
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5138d35a7410148cdaa931251a59e60f, type: 3}
+  m_Script: {fileID: 11500000, guid: 7c33a8999f7c7c44db0ef156489b2333, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nextSceneName: Heimdal-1
-  delay: 5
-  trophy: {fileID: 130598744}
+  nextSceneName: boss-stuff
+  delay: 10
+  trophy: {fileID: 0}
 --- !u!4 &1530850315
 Transform:
   m_ObjectHideFlags: 0
