@@ -7,13 +7,13 @@ public class MainMenuButton : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0))
         {
             LoadNextScene();
         }
     }
 
-    void LoadNextScene()
+    public void LoadNextScene()
     {
         SceneManager.LoadScene(nextSceneName);
     }
