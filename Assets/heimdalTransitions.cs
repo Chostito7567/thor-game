@@ -1,21 +1,18 @@
 using UnityEngine;
-using UnityEngine.SceneManagement;
+using UnityEngine.SceneManagement; // IMPORTANT: Add this so we can change scenes
 
-public class trophyTransition : MonoBehaviour
+public class tempTransitions : MonoBehaviour
 {
-    public string nextSceneName = "Heimdal-1"; // Set your next scene name here
-    public float delay = 5f; // 5-second delay timer
+    public float delay = 10f; // 10-second delay timer
 
     private float timer = 0f;
     private bool timerStarted = false;
-
-    public DisappearOnContact trophy;
+    public string nextSceneName = "Trophy-Thing"; // ← Set this in Inspector OR hardcode your next scene name
 
     void Start()
     {
         timerStarted = true; // Start the timer immediately when this object appears
     }
-
     void Update()
     {
         if (timerStarted)
@@ -24,12 +21,6 @@ public class trophyTransition : MonoBehaviour
 
             if (timer >= delay)
             {
-                LoadNextScene();
-            }
-
-            if (trophy != null && trophy.hitCounter == 0)
-            {
-                Debug.Log("Congrats on extra Life");
                 LoadNextScene();
             }
         }
