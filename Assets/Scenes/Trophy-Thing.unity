@@ -224,8 +224,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 10
   moveInterval: 0
-  minRange: {x: -5, y: -5}
-  maxRange: {x: 5, y: 3}
+  minRange: {x: -10, y: -10}
+  maxRange: {x: 10, y: 8}
 --- !u!61 &130598743
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -278,7 +278,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 130598739}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8ddabff138a1b0f47a47578cd971c5a7, type: 3}
   m_Name: 
@@ -288,6 +288,10 @@ MonoBehaviour:
   stoppingDistance: 0.5
   hitCounter: 5
   nextSceneName: boss-stuff
+  moveSpeed: 15
+  moveInterval: 0
+  minRange: {x: 0, y: 0}
+  maxRange: {x: 20, y: 20}
 --- !u!1 &560233755 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4872240502272519348, guid: d0b934a3d6129df40bf47749a896725d, type: 3}

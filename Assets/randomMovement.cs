@@ -32,9 +32,11 @@ public class RandomMovement : MonoBehaviour
             // Move the sprite to the random position smoothly
             while (isMoving)
             {
+                targetPosition = new Vector2(Random.Range(minRange.x, maxRange.x), 
+                                         Random.Range(minRange.y, maxRange.y));
                 // Move the sprite smoothly towards the target position
                 transform.position = Vector2.MoveTowards(transform.position, targetPosition, moveSpeed * Time.deltaTime);
-                
+                Debug.Log(targetPosition);
                 // If the sprite reaches the target position, stop moving
                 if (Vector2.Distance(transform.position, targetPosition) <= 0.1f)
                 {

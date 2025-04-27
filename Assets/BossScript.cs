@@ -1,17 +1,19 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using System.Collections;
+
 
 public class BossController : MonoBehaviour
 {
-    [Header("References")]
-    [Tooltip("Drag your Player GameObject here")]
+    // [Header("References")]
+    // [Tooltip("Drag your Player GameObject here")]
     public Transform player;
 
-    [Header("Movement")]
-    [Tooltip("Movement speed (units/sec)")]
+    // [Header("Movement")]
+    // [Tooltip("Movement speed (units/sec)")]
     public float speed = 2f;
-    [Tooltip("How close before boss stops moving")]
-    public float stoppingDistance = 0.5f;
+    // [Tooltip("How close before boss stops moving")]
+    public float stoppingDistance = 0.0f;
 
     [Header("Boss Stats")]
     [Tooltip("Number of hits boss can take")]
@@ -30,26 +32,15 @@ public class BossController : MonoBehaviour
         _collider2d     = GetComponent<Collider2D>();
     }
 
-    void Update()
-    {
-        if (_isDead || player == null) 
-            return;
+    public float moveSpeed = 15f;  // Speed at which the sprite moves
+    public float moveInterval = 0f; // Time interval between random positions
+    public Vector2 minRange = new Vector2(0f, 0f);  // Minimum range for random movement
+    public Vector2 maxRange = new Vector2(20f, 20f);    // Maximum range for random movement
 
-        // Move toward player until within stopping distance
-        float dist = Vector3.Distance(transform.position, player.position);
-        if (dist > stoppingDistance)
-        {
-            Vector3 dir = (player.position - transform.position).normalized;
-            transform.position += dir * speed * Time.deltaTime;
+    private Vector2 targetPosition;
+    private bool isMoving = false;
 
-            // Flip horizontally to face the player
-            Vector3 scale = transform.localScale;
-            scale.x = player.position.x > transform.position.x 
-                        ? Mathf.Abs(scale.x) 
-                        : -Mathf.Abs(scale.x);
-            transform.localScale = scale;
-        }
-    }
+
 
     void OnTriggerEnter2D(Collider2D other)
     {
