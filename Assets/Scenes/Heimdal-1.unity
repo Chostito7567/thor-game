@@ -492,8 +492,8 @@ MonoBehaviour:
   thunderPrefab: {fileID: 677355826}
   bulletSpeed: 10
   firePoint: {fileID: 455576201}
-  inputDelay: 2
-  shootCooldown: 0.5
+  inputDelay: 0.2
+  shootCooldown: 0.2
 --- !u!114 &1110928644
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -506,7 +506,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb0e2c0b8397946839a152cf24ddf8af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
+  speed: 10
 --- !u!212 &1110928645
 SpriteRenderer:
   m_ObjectHideFlags: 0
