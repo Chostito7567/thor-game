@@ -17,7 +17,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Heimdal-1.unity
     guid: 9a43ea6203b67444abcdaf5bb6d2079c
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/Trophy-Thing.unity
     guid: 80d9be726b8de4e06b9bc6d446bb5482
+  - enabled: 1
+    path: Assets/Scenes/End_Screen.unity
+    guid: 7f5ffb1bc152647caa94e05949aacc9b
   m_configObjects: {}
